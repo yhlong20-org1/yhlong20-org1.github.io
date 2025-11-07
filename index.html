@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>優品堂株式会社 - 多角的事業展開で価値を創造する</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        :root {
+            --primary: #2c5aa0;
+            --secondary: #d4af37;
+            --accent: #c33c3c;
+            --light: #f8f9fa;
+            --dark: #333333;
+            --gray: #6c757d;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--dark);
+            line-height: 1.7;
+            background-color: #fff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 头部和导航 */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* 英雄区域 */
+        .hero {
+            background: linear-gradient(rgba(44, 90, 160, 0.8), rgba(44, 90, 160, 0.9)), url('/photo-1497366754035-f200968a6e72.avif');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 180px 0 120px;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+
+        /* 关于我们 */
+        .about {
+            background: var(--light);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 业务范围 */
+        .business {
+            background: white;
+        }
+
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .business-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+
+        .business-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .business-icon {
+            background: var(--primary);
+            color: white;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .business-content {
+            padding: 25px;
+        }
+
+        .business-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .business-content ul {
+            list-style: none;
+        }
+
+        .business-content li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .business-content li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* 公司信息 */
+        .company-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: var(--light);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-card {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 10px;
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+            display: flex;
+        }
+
+        .info-item strong {
+            display: inline-block;
+            width: 120px;
+            color: var(--dark);
+        }
+
+        .info-item span {
+            flex: 1;
+        }
+
+        /* 页脚 */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-img">優</div>
+                優品堂<span>株式会社</span>
+            </a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#about">会社概要</a></li>
+                <li><a href="#business">事業内容</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>多角的な事業展開で<br>新たな価値を創造する</h1>
+            <p>優品堂株式会社は、貿易業からIT事業、不動産、観光まで幅広い事業を展開し、お客様に最高の価値を提供します。</p>
+            <a href="#about" class="btn">詳細を見る</a>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>会社概要</h2>
+                <p>Company Profile</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>信頼と品質を重視する企業</h3>
+                    <p>優品堂株式会社は、多角的な事業展開を通じて、お客様に高品質な商品とサービスを提供しています。</p>
+                    <p>私たちは、貿易事業を基盤としつつ、IT、不動産、観光、飲食など様々な分野で事業を展開し、社会に貢献することを目指しています。</p>
+                    <p>常にお客様の視点に立ち、時代の変化に対応した革新的なサービスを提供し続けます。</p>
+                    <a href="#business" class="btn">事業内容を見る</a>
+                </div>
+                <div class="about-image">
+                    <img src="/photo-1497366754035-f200968a6e72.avif" alt="オフィスイメージ">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 业务范围 -->
+    <section class="business" id="business">
+        <div class="container">
+            <div class="section-title">
+                <h2>事業内容</h2>
+                <p>Business Overview</p>
+            </div>
+            <div class="business-grid">
+                <div class="business-card">
+                    <div class="business-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <div class="business-content">
+                        <h3>貿易・販売事業</h3>
+                        <ul>
+                            <li>輸出入貿易業</li>
+                            <li>飲食店の経営</li>
+                            <li>医薬品、化粧品の販売及び輸出入</li>
+                            <li>スポーツ用品、レジャー用品の販売</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="business-card">
+                    <div class="business-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="business-content">
+                        <h3>IT・コンテンツ事業</h3>
+                        <ul>
+                            <li>ウェブコンテンツの企画・開発・制作</li>
+                            <li>コンピューターシステムの開発・販売</li>
+                            <li>電子出版・出版事業</li>
+                            <li>インターネット通信販売業</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="business-card">
+                    <div class="business-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="business-content">
+                        <h3>不動産・観光事業</h3>
+                        <ul>
+                            <li>国内外における不動産の売買・仲介</li>
+                            <li>ホテル・旅館の経営</li>
+                            <li>旅行業・旅行業者代理業</li>
+                            <li>観光コンサルティング事業</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="business-card">
+                    <div class="business-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="business-content">
+                        <h3>その他事業</h3>
+                        <ul>
+                            <li>広告代理業及び広告業</li>
+                            <li>芸能プロダクション経営</li>
+                            <li>イベント企画・運営</li>
+                            <li>経営コンサルタント業</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 公司信息 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>お問い合わせ</h2>
+                <p>Contact Information</p>
+            </div>
+            <div class="company-info">
+                <div class="info-card">
+                    <h3>会社情報</h3>
+                    <div class="info-item">
+                        <strong>会社名</strong>
+                        <span>優品堂株式会社 (Yuhindo Co., Ltd.)</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>代表者</strong>
+                        <span>孫 立婷</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>所在地</strong>
+                        <span>〒590-0077 大阪府堺市堺区中瓦町１丁２－９－５０２</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>設立</strong>
+                        <span>2024年12月</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>資本金</strong>
+                        <span>5,000,000円</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3>アクセス</h3>
+                    <div class="info-item">
+                        <strong>最寄駅</strong>
+                        <span>JR堺市駅 徒歩8分</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>駐車場</strong>
+                        <span>近隣にコインパーキングあり</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>電話番号</strong>
+                        <span>09032421688</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>メール</strong>
+                        <span>yuhindo@outlook.com</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>営業時間</strong>
+                        <span>9:00～18:00（土日祝除く）</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>優品堂株式会社</h3>
+                    <p>多角的な事業展開で新たな価値を創造し、お客様と社会の発展に貢献します。</p>
+                </div>
+                <div class="footer-column">
+                    <h3>リンク</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">ホーム</a></li>
+                        <li><a href="#about">会社概要</a></li>
+                        <li><a href="#business">事業内容</a></li>
+                        <li><a href="#contact">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>事業内容</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">貿易事業</a></li>
+                        <li><a href="#">IT事業</a></li>
+                        <li><a href="#">不動産事業</a></li>
+                        <li><a href="#">観光事業</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>お問い合わせ</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 〒590-0077 大阪府堺市堺区中瓦町１丁２－９－５０２</li>
+                        <li><i class="fas fa-phone"></i> 09032421688</li>
+                        <li><i class="fas fa-envelope"></i> yuhindo@outlook.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 優品堂株式会社 All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // 导航链接点击后关闭移动菜单
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // 滚动时头部阴影效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
